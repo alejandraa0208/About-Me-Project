@@ -1,0 +1,40 @@
+body {
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ4HEBqZudf-YLAUX3PhUKd5CPm7GHZBTesw&usqp=CAU) ;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+header { 
+    width: 100%;
+    border-style: double;
+    text-align: center;}
+h1 { 
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 20px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 50px;
+    text-shadow: 5px 5px 5px #ababab;
+    text-align: center;}
+p { width: 100%;
+    font-size: x-large ;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;}
+img { width: 325px;
+    height: 300px;
+    }
+div {
+        width: 1000px;
+        height: 45%;
+        display: inline-block;
+        column-rule: 50px;
+    }
+    
+section { 
+        vertical-align: top;
+        display: inline-block;
+        width: 1000px;
+        text-align: center;
+    }
