@@ -1,34 +1,45 @@
 'use strict';
 
-let name = prompt('What is your name?');
+let name;
+let numberOfTimeToAskName = 2;
+
+while (!name && numberOfTimeToAskName) {
+  name = prompt('What is your name?');
+  if (name === null || name.trim() === '') {
+    alert('Please enter a valid name.');
+  }
+  numberOfTimeToAskName--;
+}
+
 let message = 'Hello, ' + name + '! Thanks for wanting to get to know me. Here\'s a few questions to quiz you about me.';
 alert(message);
 
-
-function askQuestion(promptText, yesAnswer, yesAnswerOutput,noAnswer, noAnswerOutput) {
+function askQuestion(promptText, yesAnswer, yesAnswerOutput, noAnswer, noAnswerOutput) {
   let response;
   let validResponse = false;
+  let numberOfTimeToAskQuestion = 1;
 
-  while (!validResponse) {
+  while (!validResponse && numberOfTimeToAskQuestion) {
     response = prompt(promptText);
     if (response === null) {
-      console.log('User canceled the prompt.');
-      break;
-    }
-    if (response.toLowerCase() === yesAnswer) {
-      validResponse = true;
-      //console.log('User responded with: ' + response);
-      //console.log('Displaying output for "yes" answer...');
-      alert(yesAnswerOutput);
-    } else if (response.toLowerCase() === noAnswer) {
-      validResponse = true;
-      //console.log('User responded with: ' + response);
-      //console.log('Displaying output for "no" answer...');
-      alert(noAnswerOutput);
+      alert('Please answer the question.'); // Display a message to prompt the user to answer
     } else {
-      //console.log('User provided an invalid response: ' + response);
-      alert('Invalid response. Please answer \'yes\' or \'no\'.');
+      if (response.toLowerCase() === yesAnswer) {
+        validResponse = true;
+        //console.log('User responded with: ' + response);
+        //console.log('Displaying output for "yes" answer...');
+        alert(yesAnswerOutput);
+      } else if (response.toLowerCase() === noAnswer) {
+        validResponse = true;
+        //console.log('User responded with: ' + response);
+        //console.log('Displaying output for "no" answer...');
+        alert(noAnswerOutput);
+      } else {
+        //console.log('User provided an invalid response: ' + response);
+        alert('Invalid response. Please answer \'yes\' or \'no\'.');
+      }
     }
+    numberOfTimeToAskQuestion--;
   }
 }
 askQuestion('Do you think I\'m over the age of 21?','yes', 'Correct! Continue to find out my age.', 'no', 'Sorry, that\'s not correct. Continue to the next question.');
