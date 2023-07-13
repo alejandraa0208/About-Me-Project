@@ -10,6 +10,8 @@ I built a webpage to quiz users about me. The types of questions include 5 yes o
 
 ### Lighthouse Accessibility Report Score
 
+Updated as of July 12th, 2023
+
 ![Alt text](<Screenshot 2023-07-12 at 5.54.22 PM.png>)
 
 ### Reflections and Comments
