@@ -2,7 +2,7 @@
 
 ## About Me
 
-I built a webpage to quiz users about me.
+I built a webpage to quiz users about me. The types of questions include 5 yes or no, one write in question and number guessing question to spice things up.
 
 ### Author: Alejandra Altamirano
 
@@ -10,6 +10,6 @@ I built a webpage to quiz users about me.
 
 ### Lighthouse Accessibility Report Score
 
-![Alt text](<Screenshot 2023-07-11 at 5.10.46 PM.png>)
+![Alt text](<Screenshot 2023-07-12 at 5.54.22 PM.png>)
 
 ### Reflections and Comments

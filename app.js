@@ -14,38 +14,100 @@ while (!name && numberOfTimeToAskName) {
 let message = 'Hello, ' + name + '! Thanks for wanting to get to know me. Here\'s a few questions to quiz you about me.';
 alert(message);
 
-function askQuestion(promptText, yesAnswer, yesAnswerOutput, noAnswer, noAnswerOutput) {
+//got assistance with a cleaner code from Chester
+const questions = [
+  'Do you think I\'m over the age of 21?',
+  'Is my height over 5\'5?',
+  'Is seattle my hometown?',
+  'Do you think I have previous career experience in business?',
+  'Have I gone skydiving?',
+  'How many siblings do you think I have?',
+  'What is my favorite thing to do?'
+];
+
+const answers = [
+  ['yes'],
+  ['no'],
+  ['no'],
+  ['no'],
+  ['yes'],
+  ['9'],
+  ['binge TV series', 'listen to music', 'take naps']
+];
+
+const explanations = [
+  'I\'m actually 25!',
+  'It\'s giving midget, I\'m 5\'1.',
+  'Born and kinda raised in sunny Arizona',
+  'But I do own my own press on nail business.',
+  'I have gone skydiving and I went alone for my 23rd birthday!',
+  'I am the oldest of 9 siblings',
+  '. These are my top three favorite things to do!'
+];
+
+let correctAnswersCount = 0; // helps keep track of score
+
+questions.forEach((question, i) => {
   let response;
   let validResponse = false;
-  let numberOfTimeToAskQuestion = 1;
+  let numberOfAttempts = (i === 6) ? 6 : 2; // lets question 7 get 6 attempts while the rest only get 2
 
-  while (!validResponse && numberOfTimeToAskQuestion) {
-    response = prompt(promptText);
+  while (!validResponse && numberOfAttempts > 0) {
+    response = prompt(question);
     if (response === null) {
-      alert('Please answer the question.'); // Display a message to prompt the user to answer
+      alert ('Please answer the question');
     } else {
-      if (response.toLowerCase() === yesAnswer) {
-        validResponse = true;
-        //console.log('User responded with: ' + response);
-        //console.log('Displaying output for "yes" answer...');
-        alert(yesAnswerOutput);
-      } else if (response.toLowerCase() === noAnswer) {
-        validResponse = true;
-        //console.log('User responded with: ' + response);
-        //console.log('Displaying output for "no" answer...');
-        alert(noAnswerOutput);
+      if (i === 5 && isNaN(response)) {
+        alert('Invalid answer. Please enter a number.');
       } else {
-        //console.log('User provided an invalid response: ' + response);
-        alert('Invalid response. Please answer \'yes\' or \'no\'.');
+        if (i === 5) {
+          const answerNumber = parseInt(response);
+          const correctNumber = parseInt(answers[i][0]);
+
+          if (answerNumber === correctNumber) {
+            validResponse = true;
+            alert('Correct! ' + explanations[i]);
+            correctAnswersCount++;
+          } else if (answerNumber < correctNumber) {
+            alert('Your guess is too low.');
+          } else {
+            alert('Your guess is too high.');
+          }
+        } else {
+          let isCorrect = false;
+          if (answers[i].length === 0) {
+            isCorrect = true;
+          } else {
+            for (let j = 0; j < answers[i].length; j++) {
+              if (answers[i][j].toLowerCase() === response.toLowerCase()) {
+                isCorrect = true;
+                break;
+              }
+            }
+          }
+          if (isCorrect) {
+            validResponse = true;
+            alert('Correct! ' + explanations[i]);
+            correctAnswersCount++;
+          } else {
+            alert('Incorrect!');
+          }
+        }
       }
     }
-    numberOfTimeToAskQuestion--;
+    numberOfAttempts--;
   }
-}
-askQuestion('Do you think I\'m over the age of 21?','yes', 'Correct! Continue to find out my age.', 'no', 'Sorry, that\'s not correct. Continue to the next question.');
-askQuestion('Am I an only child?', 'yes', 'I\'m actually the oldest of 10 siblings!', 'no','Bingo! I\'m the oldest of 10 siblings.');
-askQuestion('Is Seattle my hometown?', 'yes', 'I\'m actually from Arizona','no','Correct! I\'m from sunny Arizona.');
-askQuestion('Do you think I have previous career experience in business?', 'yes','Nope. Continue to the webpage to see my career experience', 'no', 'You\'re right. Continue to the webpage to see my career experience.');
-askQuestion('Have I gone skydiving?', 'yes', 'I have! I went alone for my 23rd birthday.','no','Surprisingly, I have.');
 
-alert('Thank you for getting to know me ' + name);
+  if (!validResponse) {
+    let correctAnswers = '';
+    for (let j=0; j < answers[i].length; j++) {
+      correctAnswers += answers[i][j];
+      if (j !== answers[i].length - 1) {
+        correctAnswers += ',';
+      }
+    }
+    alert('The correct answer is: ' + correctAnswers + ' ' + explanations[i]);
+  }
+});
+
+alert('Thank you for playing, ' + name + '! Your score is: ' + correctAnswersCount + ' out of ' + questions.length);
