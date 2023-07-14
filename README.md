@@ -6,6 +6,12 @@ I built a webpage to quiz users about me. The types of questions include 5 yes o
 
 ### Author: Alejandra Altamirano
 
+### Paired Programming
+
+John Gause was the driver for this repository
+
+Alejandra Altamirano was the navigator
+
 ### Links and Resources
 
 ### Lighthouse Accessibility Report Score

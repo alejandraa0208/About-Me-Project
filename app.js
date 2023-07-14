@@ -50,7 +50,7 @@ let correctAnswersCount = 0; // helps keep track of score
 questions.forEach((question, i) => {
   let response;
   let validResponse = false;
-  let numberOfAttempts = (i === 6) ? 6 : 2; // lets question 7 get 6 attempts while the rest only get 2
+  let numberOfAttempts = (i === 5) ? 4 : (i === 6) ? 6 : 1; // lets question 7 get 6 attempts while the rest only get 2
 
   while (!validResponse && numberOfAttempts > 0) {
     response = prompt(question);
